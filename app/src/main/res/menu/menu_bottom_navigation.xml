@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/active_home"
+        android:icon="@drawable/ic_navi_home"
+        android:title="Author`s Shop"/>
+    <item android:id="@+id/active_stars"
+        android:icon="@drawable/ic_navi_stars"
+        android:title="Избраное"/>
+    <item android:id="@+id/active_add"
+        android:icon="@drawable/ic_navi_add"
+        android:title="Добавить"/>
+    <item android:id="@+id/active_message"
+        android:icon="@drawable/ic_navi_message"
+        android:title="Сообщения"/>
+    <item android:id="@+id/active_personal_area"
+        android:icon="@drawable/ic_navi_person"
+        android:title="Личный кабинет"/>
+</menu>

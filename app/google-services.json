@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "484547862545",
+    "firebase_url": "https://authorsshop.firebaseio.com",
+    "project_id": "authorsshop",
+    "storage_bucket": "authorsshop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484547862545:android:54010f0be1fa91f45a51b0",
+        "android_client_info": {
+          "package_name": "com.nesterenko.authorsshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "484547862545-iikrv447pueq3omnm6mq0uapalagfs9o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nesterenko.authorsshop",
+            "certificate_hash": "2363e2a9155a644153503ed01e34b104923b9e4a"
+          }
+        },
+        {
+          "client_id": "484547862545-5binu61rrm0a3r091qgt701dtirvknfl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwRhC9ytcCTWAryD596J21aBufHdfOdyU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "484547862545-5binu61rrm0a3r091qgt701dtirvknfl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
