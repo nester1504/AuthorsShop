@@ -1,104 +1,68 @@
 package com.nesterenko.authorsshop;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
-
-    ImageView impHome;
-    ImageView impPerson;
-    ImageView impMessage;
-    private ListView list;
-
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        list = findViewById(R.id.list);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        drawer = findViewById(R.id.drawerLayout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle
+                (this, drawer, toolbar,R.string.closed,R.string.open);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
-        final ArrayList<Map<String, Object>> adapterValues = new ArrayList<>();
+        NavigationView navigationView = findViewById(R.id.naviView);
+        navigationView.setNavigationItemSelectedListener(this);
 
-        Map<String, Object> itemValues = new HashMap<>();
-        itemValues.put("price", "10000");
-        itemValues.put("product", "Браслет из бисера");
-        itemValues.put("id", 1);
-        itemValues.put("image", R.drawable.bracer_3);
-
-        adapterValues.add(itemValues);
-
-        itemValues = new HashMap<>();
-        itemValues.put("price", "8000");
-        itemValues.put("product", "Браслет из бисера");
-        itemValues.put("id", 2);
-        itemValues.put("image", R.drawable.bracer_2);
-
-        adapterValues.add(itemValues);
-
-        itemValues = new HashMap<>();
-        itemValues.put("price", "12000");
-        itemValues.put("product", "Брошка из бисера");
-        itemValues.put("id", 3);
-        itemValues.put("image", R.drawable.brooch_1);
-
-        adapterValues.add(itemValues);
-
-        itemValues = new HashMap<>();
-        itemValues.put("price", "5000");
-        itemValues.put("product", "Браслет из чашуи жопя дракона");
-        itemValues.put("id", 4);
-        itemValues.put("image", R.drawable.bracer_1);
-
-        adapterValues.add(itemValues);
-
-        itemValues = new HashMap<>();
-        itemValues.put("price", "7000");
-        itemValues.put("product", "СЕрьги победителя");
-        itemValues.put("id", 5);
-        itemValues.put("image", R.drawable.earring_1);
-
-        adapterValues.add(itemValues);
-
-
-        String[] key = new String[]{"price", "product", "image"};
-
-        int ids[] = new int[]{R.id.price, R.id.product, R.id.imageViewHero};
-
-        final SimpleAdapter adapter = new SimpleAdapter(this,
-                adapterValues,
-                R.layout.listitem_new_contacts,
-                key,
-                ids);
-
-        list.setAdapter(adapter);
-
+        MainFragment mainFragment = new MainFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().add(R.id.container, mainFragment).commit();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.active_home:
-
+                        MainFragment mainFragment = new MainFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, mainFragment).addToBackStack(null).commit();
                         break;
-                    case R.id.active_stars:
-
+                    case R.id.active_favorites:
+                        FavoritesFragment favoritesFragment = new FavoritesFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, favoritesFragment).addToBackStack(null).commit();
+                        break;
+                    case R.id.active_message:
+                        MessageFragment messageFragment = new MessageFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, messageFragment).addToBackStack(null).commit();
                         break;
                     case R.id.active_personal_area:
-
+                        PersonFragment personFragment = new PersonFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, personFragment).addToBackStack(null).commit();
+                        break;
+                    case R.id.active_add:
+                        Intent intent = new Intent(MainActivity.this, ToAdvertiseActivity.class);
+                        startActivity(intent);
                         break;
 
                 }
@@ -106,5 +70,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private long previusBackTime = 0;
+
+    @Override
+    public void onBackPressed() {
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        if (count > 0) {
+            super.onBackPressed();
+        } else {
+            long currentTime = System.currentTimeMillis();
+            if (currentTime - 2500 > previusBackTime) {
+                Toast.makeText(this, "Для выхода нажмите ещё раз", Toast.LENGTH_SHORT).show();
+                previusBackTime = System.currentTimeMillis();
+            } else {
+                super.onBackPressed();
+            }
+        }
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        setTitle(menuItem.getItemId());
+        int  itemId = menuItem.getItemId();
+
+
+        drawer.closeDrawer(Gravity.START);
+        return true;
     }
 }

@@ -3,7 +3,7 @@
     <item android:id="@+id/active_home"
         android:icon="@drawable/ic_navi_home"
         android:title="Author`s Shop"/>
-    <item android:id="@+id/active_stars"
+    <item android:id="@+id/active_favorites"
         android:icon="@drawable/ic_navi_stars"
         android:title="Избраное"/>
     <item android:id="@+id/active_add"

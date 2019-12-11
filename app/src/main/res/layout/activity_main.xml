@@ -1,31 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/list"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:divider="@color/colorPrimary"
-        android:dividerHeight="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/listitem_new_contacts" />
+        android:layout_height="56dp"
+        android:background="@color/colorPrimary" />
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:itemBackground="@color/colorPrimary"
-        app:itemIconTint="@color/bottom_navigation_item_backgroud_colors"
-        app:itemTextColor="@color/bottom_navigation_item_backgroud_colors"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu_bottom_navigation" />
+        android:layout_height="match_parent"
+        tools:openDrawer="start">
 
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+
+            <android.support.design.widget.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                app:itemBackground="@color/colorPrimary"
+                app:itemIconTint="@color/bottom_navigation_item_backgroud_colors"
+                app:itemTextColor="@color/bottom_navigation_item_backgroud_colors"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:menu="@menu/menu_bottom_navigation" />
+
+
+        </LinearLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/naviView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/menu_nav" />
+
+
+    </android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>
