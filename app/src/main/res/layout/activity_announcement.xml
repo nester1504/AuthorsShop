@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
     <android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/announcement"
         android:orientation="vertical">
 
@@ -61,60 +67,62 @@
             </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.CardView>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
-
-        <TextView
-            android:id="@+id/announcement_description_text"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:text="Броши ручной работы. Ярмарка Мастеров - ручная работа. Купить Брошь из бисера Вышитая брошь Брошь бисер Bow. Wow!. Handmade."
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_marginTop="16dp"
-        android:background="@color/white"
-        android:id="@+id/announcement_logo"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/ic_navi_person"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
 
-        </ImageView>
+            <TextView
+                android:id="@+id/announcement_description_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="Броши ручной работы. Ярмарка Мастеров - ручная работа. Купить Брошь из бисера Вышитая брошь Брошь бисер Bow. Wow!. Handmade."
+                android:textSize="18sp" />
+        </LinearLayout>
 
-        <TextView
-            android:layout_marginStart="32dp"
-            android:textSize="25sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Мятное Небо"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView6"
-            app:layout_constraintTop_toTopOf="parent" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            android:id="@+id/announcement_logo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_navi_person"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </ImageView>
+
+            <TextView
+                android:layout_marginStart="32dp"
+                android:textSize="25sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Мятное Небо"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView6"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
 
     </android.support.constraint.ConstraintLayout>
 
-
-    </android.support.constraint.ConstraintLayout>
+</ScrollView>

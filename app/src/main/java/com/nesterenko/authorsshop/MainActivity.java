@@ -1,6 +1,7 @@
 package com.nesterenko.authorsshop;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -23,6 +24,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Вертикальная оринтация
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawerLayout);
@@ -37,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         MainFragment mainFragment = new MainFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.container, mainFragment).commit();
+
+        //Нижняя навигация
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -71,6 +77,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
     }
+
+    // Выход из приложения
 
     private long previusBackTime = 0;
 
