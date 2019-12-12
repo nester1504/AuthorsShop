@@ -5,20 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -76,7 +70,7 @@ public class MainFragment extends Fragment implements OrderAdapter.OrderClickLis
 
     @Override
     public void onRecyclerItemClicked(OrderTest orderTest, int position) {
-        Intent intent = new Intent(getContext(),Announcement.class);
+        Intent intent = new Intent(getContext(), AnnouncementActivity.class);
         startActivity(intent);
         //Toast.makeText(getContext(),"" +position,Toast.LENGTH_SHORT).show();
     }
