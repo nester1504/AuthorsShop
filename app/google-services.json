@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "484547862545-4495517mgg3m37kfffiskttqnlvo3c4j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nesterenko.authorsshop",
+            "certificate_hash": "be89bfead31ce6ee43e3cbf3fa222d5957dbfbbb"
+          }
+        },
+        {
           "client_id": "484547862545-iikrv447pueq3omnm6mq0uapalagfs9o.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

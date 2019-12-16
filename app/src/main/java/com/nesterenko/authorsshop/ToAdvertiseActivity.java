@@ -10,24 +10,51 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.theartofdev.edmodo.cropper.CropImage;
+
+import java.util.List;
 
 public class ToAdvertiseActivity extends AppCompatActivity {
     ImageButton btm;
     ImageView img;
     Uri myUri;
+    private TextView nameText;
+    private TextView priceText;
+    DatabaseReference reference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_advertise);
 
+        reference = FirebaseDatabase.getInstance().getReference();
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         btm = findViewById(R.id.imageView4);
         img = findViewById(R.id.imageView5);
+
+        nameText = findViewById(R.id.name_text);
+        priceText = findViewById(R.id.price_text);
+
+        Button buttonAdd = findViewById(R.id.buttonAdd);
+
+
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int priseInt = Integer.parseInt( priceText.getText().toString());
+                reference.child("product").push().setValue(new Product(priseInt,nameText.getText().toString(),2,""));
+                Intent intent = new Intent(ToAdvertiseActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

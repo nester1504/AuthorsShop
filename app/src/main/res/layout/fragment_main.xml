@@ -12,4 +12,12 @@
         android:layout_height="match_parent"
         tools:listitem="@layout/listitem_new_contacts"/>
 
+    <ProgressBar
+        android:id="@+id/circular_progress"
+        android:visibility="invisible"
+        android:layout_gravity="center"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
