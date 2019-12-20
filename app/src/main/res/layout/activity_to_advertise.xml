@@ -11,7 +11,6 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="15dp"
-        android:onClick="onChooseaFile"
         android:src="@drawable/ic_videocam"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

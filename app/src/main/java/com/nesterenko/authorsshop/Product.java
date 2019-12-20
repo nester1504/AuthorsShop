@@ -1,28 +1,13 @@
 package com.nesterenko.authorsshop;
 
+import android.net.Uri;
+
 public class Product {
 
     private int price;
     private String heading;
-    private int image;
+    private String urlImage;
     String key;
-
-    public Product(){
-
-    }
-
-    public Product(int price, String heading, int image, String key) {
-        this.price = price;
-        this.heading = heading;
-        this.image = image;
-        this.key = key;
-    }
-
-    public Product(int price, String heading, int image) {
-        this.price = price;
-        this.heading = heading;
-        this.image = image;
-    }
 
     public Product(int price, String heading) {
         this.price = price;
@@ -37,8 +22,12 @@ public class Product {
         this.heading = heading;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public int getPrice() {
@@ -49,7 +38,24 @@ public class Product {
         return heading;
     }
 
-    public int getImage() {
-        return image;
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public Product(int price, String heading, String urlImage) {
+        this.price = price;
+        this.heading = heading;
+        this.urlImage = urlImage;
+    }
+
+    public Product(int price, String heading, String urlImage, String key) {
+        this.price = price;
+        this.heading = heading;
+        this.urlImage = urlImage;
+        this.key = key;
     }
 }

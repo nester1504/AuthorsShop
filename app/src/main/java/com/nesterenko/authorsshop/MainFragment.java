@@ -30,7 +30,6 @@ public class MainFragment extends Fragment implements ProductAdapter.ProductClic
 
     private List<Product> list_product;
     private ProductAdapter adapter;
-    private FirebaseDatabase database;
     private DatabaseReference reference;
 
 
@@ -53,7 +52,7 @@ public class MainFragment extends Fragment implements ProductAdapter.ProductClic
         super.onActivityCreated(savedInstanceState);
         View rootView = getView();
 
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         reference = database.getReference("product");
 
         list_product = new ArrayList<>();

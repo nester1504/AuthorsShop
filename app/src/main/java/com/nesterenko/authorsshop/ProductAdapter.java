@@ -1,5 +1,6 @@
 package com.nesterenko.authorsshop;
 
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+import com.squareup.picasso.Picasso;
+
+import java.net.URL;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -35,8 +40,10 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         OrdersMyHolderProduct vh = (OrdersMyHolderProduct) viewHolder;
         vh.price.setText(product.getPrice() + " ");
         vh.product.setText(product.getHeading() + "");
-        //Изменить!!!!!
-        vh.imageViewProduct.setImageResource(R.drawable.bracer_1);
+        String urlSrt = product.getUrlImage();
+        Uri uri = Uri.parse(urlSrt);
+        Picasso.get().load(uri).into(vh.imageViewProduct);
+
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
