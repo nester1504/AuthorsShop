@@ -1,18 +1,17 @@
 package com.nesterenko.authorsshop;
 
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
-import java.net.URL;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -21,7 +20,7 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private List<Product> dataset;
     private ProductClickListener listener;
 
-    public ProductAdapter(List<Product> dataset) {
+    ProductAdapter(List<Product> dataset) {
         this.dataset = dataset;
     }
 
@@ -65,7 +64,7 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextView product;
         TextView price;
 
-        public OrdersMyHolderProduct(@NonNull View itemView) {
+        OrdersMyHolderProduct(@NonNull View itemView) {
             super(itemView);
             imageViewProduct = itemView.findViewById(R.id.imageProduct);
             product = itemView.findViewById(R.id.textProduct);
@@ -73,7 +72,7 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
-    public void setItemClickListener(ProductClickListener listener) {
+    void setItemClickListener(ProductClickListener listener) {
         this.listener = listener;
     }
 

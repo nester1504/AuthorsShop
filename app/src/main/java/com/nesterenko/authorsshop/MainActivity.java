@@ -1,19 +1,24 @@
 package com.nesterenko.authorsshop;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+
+//import android.widget.Toolbar;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,36 +49,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //Нижняя навигация
 
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.active_home:
+                    MainFragment mainFragment1 = new MainFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, mainFragment1).addToBackStack(null).commit();
+                    break;
+                case R.id.active_favorites:
+                    FavoritesFragment favoritesFragment = new FavoritesFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, favoritesFragment).addToBackStack(null).commit();
+                    break;
+                case R.id.active_message:
+                    MessageFragment messageFragment = new MessageFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, messageFragment).addToBackStack(null).commit();
+                    break;
+                case R.id.active_personal_area:
+                    PersonFragment personFragment = new PersonFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, personFragment).addToBackStack(null).commit();
+                    break;
+                case R.id.active_add:
+                    Intent intent = new Intent(MainActivity.this, ToAdvertiseActivity.class);
+                    startActivity(intent);
+                    break;
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.active_home:
-                        MainFragment mainFragment = new MainFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, mainFragment).addToBackStack(null).commit();
-                        break;
-                    case R.id.active_favorites:
-                        FavoritesFragment favoritesFragment = new FavoritesFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, favoritesFragment).addToBackStack(null).commit();
-                        break;
-                    case R.id.active_message:
-                        MessageFragment messageFragment = new MessageFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, messageFragment).addToBackStack(null).commit();
-                        break;
-                    case R.id.active_personal_area:
-                        PersonFragment personFragment = new PersonFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, personFragment).addToBackStack(null).commit();
-                        break;
-                    case R.id.active_add:
-                        Intent intent = new Intent(MainActivity.this, ToAdvertiseActivity.class);
-                        startActivity(intent);
-                        break;
-
-                }
-                return true;
             }
+            return true;
         });
 
     }
@@ -100,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    @SuppressLint("WrongConstant")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         setTitle(menuItem.getItemId());

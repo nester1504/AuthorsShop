@@ -1,7 +1,5 @@
 package com.nesterenko.authorsshop;
 
-import android.net.Uri;
-
 public class Product {
 
     private int price;
@@ -14,6 +12,9 @@ public class Product {
         this.heading = heading;
     }
 
+    public Product(){
+
+    }
     public void setPrice(int price) {
         this.price = price;
     }
