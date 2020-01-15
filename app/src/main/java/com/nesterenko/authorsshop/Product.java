@@ -1,11 +1,29 @@
 package com.nesterenko.authorsshop;
 
-public class Product {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+
+public class Product  implements Serializable {
 
     private int price;
     private String heading;
-    private String urlImage;
+    private ArrayList<String> urlImageList;
     String key;
+
+    public void setUrlImageList(ArrayList<String> urlImageList) {
+        this.urlImageList = urlImageList;
+    }
+
+    public ArrayList<String> getUrlImageList() {
+        return urlImageList;
+    }
+
+    public Product(int price, String heading, ArrayList<String> urlImageList) {
+        this.price = price;
+        this.heading = heading;
+        this.urlImageList = urlImageList;
+    }
 
     public Product(int price, String heading) {
         this.price = price;
@@ -23,10 +41,6 @@ public class Product {
         this.heading = heading;
     }
 
-    public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
-    }
-
     public void setKey(String key) {
         this.key = key;
     }
@@ -39,24 +53,8 @@ public class Product {
         return heading;
     }
 
-    public String getUrlImage() {
-        return urlImage;
-    }
-
     public String getKey() {
         return key;
     }
 
-    public Product(int price, String heading, String urlImage) {
-        this.price = price;
-        this.heading = heading;
-        this.urlImage = urlImage;
-    }
-
-    public Product(int price, String heading, String urlImage, String key) {
-        this.price = price;
-        this.heading = heading;
-        this.urlImage = urlImage;
-        this.key = key;
-    }
 }

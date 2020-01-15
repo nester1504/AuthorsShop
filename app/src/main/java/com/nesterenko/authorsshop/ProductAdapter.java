@@ -39,15 +39,16 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         OrdersMyHolderProduct vh = (OrdersMyHolderProduct) viewHolder;
         vh.price.setText(product.getPrice() + " ");
         vh.product.setText(product.getHeading() + "");
-        String urlSrt = product.getUrlImage();
-        Uri uri = Uri.parse(urlSrt);
-        Picasso.get().load(uri).into(vh.imageViewProduct);
+        String[] urlSrtMas = product.getUrlImageList().toArray(new String[0]);
+        Uri uri = Uri.parse(urlSrtMas[0]);
+        Picasso.get().load(uri).resize(600,600).into(vh.imageViewProduct);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (listener != null) {
                     listener.onRecyclerItemClicked(product, position);
+
                 }
             }
         });

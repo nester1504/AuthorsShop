@@ -40,7 +40,9 @@ public class MainFragment extends Fragment implements ProductAdapter.ProductClic
     @Override
     public void onRecyclerItemClicked(Product product, int position) {
         Intent intent = new Intent(getContext(), AnnouncementActivity.class);
+        intent.putExtra(Product.class.getSimpleName(), product);
         startActivity(intent);
+
     }
 
     @Override
