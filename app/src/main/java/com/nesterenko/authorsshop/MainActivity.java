@@ -14,42 +14,46 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-
-//import android.widget.Toolbar;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
-
+    private NavigationView navigationView;
+    FirebaseAuth auth;
+    private FirebaseAuth.AuthStateListener authStateListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        drawer = findViewById(R.id.drawerLayout);
+        navigationView = findViewById(R.id.naviView);
+        auth = FirebaseAuth.getInstance();
+
         // Вертикальная оринтация
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+
+        //Боковая навигация
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        drawer = findViewById(R.id.drawerLayout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle
                 (this, drawer, toolbar,R.string.closed,R.string.open);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.naviView);
         navigationView.setNavigationItemSelectedListener(this);
 
         MainFragment mainFragment = new MainFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.container, mainFragment).commit();
 
+
         //Нижняя навигация
-
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -66,8 +70,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, messageFragment).addToBackStack(null).commit();
                     break;
                 case R.id.active_personal_area:
-                    PersonFragment personFragment = new PersonFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, personFragment).addToBackStack(null).commit();
+
+                            if(auth.getCurrentUser() != null) {
+                                AccountFragment accountFragment = new AccountFragment();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.container, accountFragment).addToBackStack(null).commit();
+                            }  else {
+                                PersonFragment personFragment = new PersonFragment();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.container, personFragment).addToBackStack(null).commit();
+
+                            }
+
                     break;
                 case R.id.active_add:
                     Intent intent = new Intent(MainActivity.this, ToAdvertiseActivity.class);
@@ -107,9 +119,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         setTitle(menuItem.getItemId());
         int  itemId = menuItem.getItemId();
-
-
         drawer.closeDrawer(Gravity.START);
         return true;
     }
+
 }

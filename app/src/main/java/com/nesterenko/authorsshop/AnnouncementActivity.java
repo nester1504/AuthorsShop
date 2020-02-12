@@ -8,6 +8,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.like.LikeButton;
+import com.like.OnLikeListener;
 import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
@@ -18,7 +23,7 @@ public class AnnouncementActivity extends AppCompatActivity {
     CarouselView carouselView;
    //int[] sampleImages = {R.drawable.bracer_1, R.drawable.bracer_3, R.drawable.brooch_1, R.drawable.bracer_2, R.drawable.bracer_1};
    Product product;
-
+   public LikeButton imageFavorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +39,37 @@ public class AnnouncementActivity extends AppCompatActivity {
 
         carouselView = (CarouselView) findViewById(R.id.announcement_slider);
 
+        imageFavorite = findViewById(R.id.announcement_favorite);
+
+
+
+        imageFavorite.setOnLikeListener(new OnLikeListener() {
+            @Override
+            public void liked(LikeButton likeButton) {
+                String login = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("favorite/" + login + "/" + product.getKey());
+                product.setFavorite(true);
+                ref.setValue(product);
+            }
+
+            @Override
+            public void unLiked(LikeButton likeButton) {
+                String login = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("favorite/" + login + "/" + product.getKey());
+                ref.removeValue();
+            }
+        });
 
         assert arguments != null;
         product = (Product) arguments.getSerializable(Product.class.getSimpleName());
         announcement_price_text.setText(product.getPrice() + " ");
         announcement_heading_text.setText(product.getHeading() +" ");
-        //announcement_icon.setImageURI(Uri.parse(product.getUrlImageList().get(0)));
-       // Picasso.get().load(product.getUrlImageList().get(0)).resize(600,600).into(announcement_icon);
+
+        if(product.isFavorite() == true){
+            imageFavorite.setLiked(true);
+        } else {
+            imageFavorite.setLiked(false);
+        }
 
         carouselView.setPageCount(product.getUrlImageList().size());
         carouselView.setImageListener(imageListener);

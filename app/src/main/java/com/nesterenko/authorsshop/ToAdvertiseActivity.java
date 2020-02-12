@@ -41,12 +41,9 @@ public class ToAdvertiseActivity extends AppCompatActivity {
     private ImageView img4;
     private ImageView img5;
     private List<Uri> myUriList = new ArrayList<>();
-    private List<Uri> urlString = new ArrayList<>();
     private ArrayList<String> listUrl = new ArrayList<>();
-    private String[] str = new String[5];
     private TextView nameText;
     private TextView priceText;
-    private TextView nameSupport;
     private DatabaseReference reference;
     private StorageReference storageReference;
 
@@ -55,9 +52,9 @@ public class ToAdvertiseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_advertise);
 
-        CheckBox checkBox = findViewById(R.id.materialCheckBox2);
-        CheckBox checkBox1 = findViewById(R.id.materialCheckBox);
-        CheckBox checkBox2 = findViewById(R.id.materialCheckBox3);
+        CheckBox checkBoxPrice = findViewById(R.id.materialCheckBoxName);
+        CheckBox checkBoxName = findViewById(R.id.materialCheckBoxPrice);
+        CheckBox checkBoxFoto = findViewById(R.id.materialCheckBoxFoto);
 
 
 
@@ -67,7 +64,9 @@ public class ToAdvertiseActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
-        ImageButton btm = findViewById(R.id.imageView4);
+        ImageButton btm = findViewById(R.id.imageButtonFoto);
+
+
         img1 = findViewById(R.id.image_1);
         img2 = findViewById(R.id.image_2);
         img3 = findViewById(R.id.image_3);
@@ -76,8 +75,6 @@ public class ToAdvertiseActivity extends AppCompatActivity {
 
         nameText = findViewById(R.id.name_text);
         priceText = findViewById(R.id.price_text);
-        nameSupport = findViewById(R.id.nameSupport);
-
 
         priceText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -92,10 +89,12 @@ public class ToAdvertiseActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(priceText.getText().toString().length()<1){
-                    checkBox.setChecked(false);
+
+
+                if (priceText.getText().toString().length() < 1) {
+                    checkBoxPrice.setChecked(false);
                 } else {
-                    checkBox.setChecked(true);
+                    checkBoxPrice.setChecked(true);
                 }
             }
         });
@@ -114,16 +113,11 @@ public class ToAdvertiseActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(nameText.getText().toString().length()>=1){
-                    nameSupport.setVisibility(View.VISIBLE);
-                } else {
-                    nameSupport.setVisibility(View.GONE);
-                }
 
-                if(nameText.getText().toString().length()<3){
-                    checkBox1.setChecked(false);
+                if (nameText.getText().toString().length() < 3) {
+                    checkBoxName.setChecked(false);
                 } else {
-                    checkBox1.setChecked(true);
+                    checkBoxName.setChecked(true);
                 }
             }
         });
@@ -133,23 +127,51 @@ public class ToAdvertiseActivity extends AppCompatActivity {
         btm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TedImagePicker.with(ToAdvertiseActivity.this)
+                TedImagePicker.with(ToAdvertiseActivity.this).max(5,"Нельзя добавлять более 5 фото")
                         .startMultiImage(new OnMultiSelectedListener() {
                             @Override
                             public void onSelected(@org.jetbrains.annotations.NotNull @NotNull List<? extends Uri> uriList) {
-                                img1.setImageURI(uriList.get(0));
-                                img1.setVisibility(View.VISIBLE);
-                                img2.setImageURI(uriList.get(1));
-                                img2.setVisibility(View.VISIBLE);
-                                img3.setImageURI(uriList.get(2));
-                                img3.setVisibility(View.VISIBLE);
-                                img4.setImageURI(uriList.get(3));
-                                img4.setVisibility(View.VISIBLE);
-                                img5.setImageURI(uriList.get(4));
-                                img5.setVisibility(View.VISIBLE);
+                                myUriList.clear();
                                 myUriList.addAll(uriList);
-                                if(img1!=null){
-                                    checkBox2.setChecked(true);
+                                if(myUriList.size()==1){
+                                    img1.setImageURI(uriList.get(0));
+                                    img1.setVisibility(View.VISIBLE);
+                                } else if (myUriList.size()==2){
+                                    img1.setImageURI(uriList.get(0));
+                                    img1.setVisibility(View.VISIBLE);
+                                    img2.setImageURI(uriList.get(1));
+                                    img2.setVisibility(View.VISIBLE);
+                                } else if(myUriList.size() == 3){
+                                    img1.setImageURI(uriList.get(0));
+                                    img1.setVisibility(View.VISIBLE);
+                                    img2.setImageURI(uriList.get(1));
+                                    img2.setVisibility(View.VISIBLE);
+                                    img3.setImageURI(uriList.get(2));
+                                    img3.setVisibility(View.VISIBLE);
+                                } else if(myUriList.size() == 4){
+                                    img1.setImageURI(uriList.get(0));
+                                    img1.setVisibility(View.VISIBLE);
+                                    img2.setImageURI(uriList.get(1));
+                                    img2.setVisibility(View.VISIBLE);
+                                    img3.setImageURI(uriList.get(2));
+                                    img3.setVisibility(View.VISIBLE);
+                                    img4.setImageURI(uriList.get(3));
+                                    img4.setVisibility(View.VISIBLE);
+                                } else if(myUriList.size() == 5){
+                                    img1.setImageURI(uriList.get(0));
+                                    img1.setVisibility(View.VISIBLE);
+                                    img2.setImageURI(uriList.get(1));
+                                    img2.setVisibility(View.VISIBLE);
+                                    img3.setImageURI(uriList.get(2));
+                                    img3.setVisibility(View.VISIBLE);
+                                    img4.setImageURI(uriList.get(3));
+                                    img4.setVisibility(View.VISIBLE);
+                                    img5.setImageURI(uriList.get(4));
+                                    img5.setVisibility(View.VISIBLE);
+                                }
+
+                                if (img1 != null) {
+                                    checkBoxFoto.setChecked(true);
                                 }
                             }
                         });
@@ -172,9 +194,9 @@ public class ToAdvertiseActivity extends AppCompatActivity {
     }
 
     public void uploadFile(int index) {
-        if (myUriList.get(index-1) != null) {
-            StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(myUriList.get(index-1)));
-            fileReference.putFile(myUriList.get(index-1)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        if (myUriList.get(index - 1) != null) {
+            StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(myUriList.get(index - 1)));
+            fileReference.putFile(myUriList.get(index - 1)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
@@ -184,10 +206,10 @@ public class ToAdvertiseActivity extends AppCompatActivity {
                             if (index == myUriList.size()) {
                                 listUrl.add(uri.toString());
                                 int priseInt = Integer.parseInt(priceText.getText().toString());
-                                reference.child("product").push().setValue(new Product(priseInt, nameText.getText().toString(), listUrl));
+                                reference.child("product").push().setValue(new Product(priseInt, nameText.getText().toString(), listUrl,false));
                             } else {
                                 listUrl.add(uri.toString());
-                                uploadFile(index+1);
+                                uploadFile(index + 1);
                             }
 
                         }
@@ -206,22 +228,6 @@ public class ToAdvertiseActivity extends AppCompatActivity {
         }
 
     }
-
-//    public void uploadFile(){
-//
-//        StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(myUriList.get(0)));
-//        fileReference.putFile(myUriList.get(0)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                Task<Uri> downloadUrl = taskSnapshot.getStorage().getDownloadUrl();
-//                Uri result = downloadUrl.getResult();
-//                myUriList2.add(0,result);
-//                String resultStr = myUriList2.get(0).toString();
-//                int priseInt = Integer.parseInt(priceText.getText().toString());
-//                reference.child("product").push().setValue(new Product(priseInt, nameText.getText().toString(), resultStr));
-//            }
-//        });
-
 
 }
 

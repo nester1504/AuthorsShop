@@ -10,6 +10,22 @@ public class Product  implements Serializable {
     private String heading;
     private ArrayList<String> urlImageList;
     String key;
+    private boolean favorite;
+
+    public Product(int price, String heading, ArrayList<String> urlImageList, boolean favorite) {
+        this.price = price;
+        this.heading = heading;
+        this.urlImageList = urlImageList;
+        this.favorite = favorite;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
+    }
 
     public void setUrlImageList(ArrayList<String> urlImageList) {
         this.urlImageList = urlImageList;

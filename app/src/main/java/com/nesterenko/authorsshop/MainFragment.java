@@ -51,7 +51,11 @@ public class MainFragment extends Fragment implements ProductAdapter.ProductClic
         View rootView = getView();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reference = database.getReference("product");
+        reference = database.getReference("product")
+                .orderByChild("category")
+                .equalTo("jewellery", "category")
+                .limitToFirst(2)
+                .getRef();
 
         list_product = new ArrayList<>();
 
@@ -69,9 +73,13 @@ public class MainFragment extends Fragment implements ProductAdapter.ProductClic
 
     private void updateList() {
         reference.addChildEventListener(new ChildEventListener() {
+            int counter = 0;
+
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                list_product.add(dataSnapshot.getValue(Product.class));
+                Product prod = dataSnapshot.getValue(Product.class);
+                prod.setKey(dataSnapshot.getKey());
+                list_product.add(0, prod);
                 adapter.notifyDataSetChanged();
             }
 
@@ -105,7 +113,7 @@ public class MainFragment extends Fragment implements ProductAdapter.ProductClic
 
     private int getItemIndex(Product product) {
         int index = -1;
-        for (int i = 0; i > list_product.size(); i++) {
+        for (int i = 0; i < list_product.size(); i++) {
             if (list_product.get(i).key.equals(product.key)) {
                 index = i;
                 break;

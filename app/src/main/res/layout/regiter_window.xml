@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardElevation="10dp">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/emailFiend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp"
+            android:textColorHint="@color/colorAccent"
+            app:met_floatingLabel="highlight"
+            app:met_singleLineEllipsis="true"
+            android:hint="E-mail" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/passFiend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:inputType="textPassword"
+            android:textSize="20sp"
+            android:textColorHint="@color/colorAccent"
+            app:met_floatingLabel="highlight"
+            app:met_singleLineEllipsis="true"
+            android:hint="Пароль" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/nameFiend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:inputType="text"
+            android:textSize="20sp"
+            android:textColorHint="@color/colorAccent"
+            app:met_floatingLabel="highlight"
+            app:met_singleLineEllipsis="true"
+            android:hint="Введите Имя" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/phoneFiend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:inputType="phone"
+            android:textSize="20sp"
+            android:textColorHint="@color/colorAccent"
+            app:met_floatingLabel="highlight"
+            app:met_singleLineEllipsis="true"
+            android:hint="Телефон" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
