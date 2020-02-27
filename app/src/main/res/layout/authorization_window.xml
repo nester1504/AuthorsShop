@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardElevation="10dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/authorization_inputEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="E-mail"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="20sp"
+            app:met_floatingLabel="highlight"
+            app:met_singleLineEllipsis="true" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/authorization_inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:inputType="textPassword"
+            android:textSize="20sp"
+            android:textColorHint="@color/colorAccent"
+            app:met_floatingLabel="highlight"
+            app:met_singleLineEllipsis="true"
+            android:hint="Пароль" />
+
+        <Button
+            android:id="@+id/authorization_button_enter"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Войти" />
+
+
+            <TextView
+                android:id="@+id/authorization_password_rec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center"
+                android:text="Забыл пароль?"
+                android:textColor="@color/blue"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/authorization_button_registration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimary"
+                android:text="Регистрация"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

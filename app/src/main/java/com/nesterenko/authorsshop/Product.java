@@ -11,6 +11,23 @@ public class Product  implements Serializable {
     private ArrayList<String> urlImageList;
     String key;
     private boolean favorite;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Product(int price, String heading, ArrayList<String> urlImageList, boolean favorite, String description) {
+        this.price = price;
+        this.heading = heading;
+        this.urlImageList = urlImageList;
+        this.favorite = favorite;
+        this.description = description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Product(int price, String heading, ArrayList<String> urlImageList, boolean favorite) {
         this.price = price;

@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.NotNull;
@@ -44,15 +45,17 @@ public class ToAdvertiseActivity extends AppCompatActivity {
     private ArrayList<String> listUrl = new ArrayList<>();
     private TextView nameText;
     private TextView priceText;
+    private TextView contextText;
     private DatabaseReference reference;
     private StorageReference storageReference;
+    private String login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_advertise);
 
-        CheckBox checkBoxPrice = findViewById(R.id.materialCheckBoxName);
+
         CheckBox checkBoxName = findViewById(R.id.materialCheckBoxPrice);
         CheckBox checkBoxFoto = findViewById(R.id.materialCheckBoxFoto);
 
@@ -60,6 +63,8 @@ public class ToAdvertiseActivity extends AppCompatActivity {
 
         reference = FirebaseDatabase.getInstance().getReference();
         storageReference = FirebaseStorage.getInstance().getReference("product");
+        login = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -75,52 +80,7 @@ public class ToAdvertiseActivity extends AppCompatActivity {
 
         nameText = findViewById(R.id.name_text);
         priceText = findViewById(R.id.price_text);
-
-        priceText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-
-                if (priceText.getText().toString().length() < 1) {
-                    checkBoxPrice.setChecked(false);
-                } else {
-                    checkBoxPrice.setChecked(true);
-                }
-            }
-        });
-
-        nameText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-
-                if (nameText.getText().toString().length() < 3) {
-                    checkBoxName.setChecked(false);
-                } else {
-                    checkBoxName.setChecked(true);
-                }
-            }
-        });
+        contextText = findViewById(R.id.context_text);
 
         Button buttonAdd = findViewById(R.id.buttonAdd);
 
@@ -181,6 +141,7 @@ public class ToAdvertiseActivity extends AppCompatActivity {
 
         buttonAdd.setOnClickListener(view -> {
             uploadFile(1);
+//            uploadFileUser(1);
             Intent intent = new Intent(ToAdvertiseActivity.this, MainActivity.class);
             startActivity(intent);
         });
@@ -206,7 +167,8 @@ public class ToAdvertiseActivity extends AppCompatActivity {
                             if (index == myUriList.size()) {
                                 listUrl.add(uri.toString());
                                 int priseInt = Integer.parseInt(priceText.getText().toString());
-                                reference.child("product").push().setValue(new Product(priseInt, nameText.getText().toString(), listUrl,false));
+                                reference.child("product").push().setValue(new Product(priseInt, nameText.getText().toString(), listUrl,false,contextText.getText().toString()));
+                                reference.child("Users/"+ login + "/product").push().setValue(new Product(priseInt, nameText.getText().toString(), listUrl,false,contextText.getText().toString()));
                             } else {
                                 listUrl.add(uri.toString());
                                 uploadFile(index + 1);
@@ -228,6 +190,42 @@ public class ToAdvertiseActivity extends AppCompatActivity {
         }
 
     }
+
+//    public void uploadFileUser(int index) {
+//        if (myUriList.get(index - 1) != null) {
+//            StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(myUriList.get(index - 1)));
+//            fileReference.putFile(myUriList.get(index - 1)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                @Override
+//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//
+//                    fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                        @Override
+//                        public void onSuccess(Uri uri) {
+//                            if (index == myUriList.size()) {
+//                                listUrl.add(uri.toString());
+//                                int priseInt = Integer.parseInt(priceText.getText().toString());
+//                                reference.child("Users/"+ login + "/product").push().setValue(new Product(priseInt, nameText.getText().toString(), listUrl,false,contextText.getText().toString()));
+//                            } else {
+//                                listUrl.add(uri.toString());
+//                                uploadFile(index + 1);
+//                            }
+//
+//                        }
+//                    });
+//                }
+//            }).addOnFailureListener(new OnFailureListener() {
+//                @Override
+//                public void onFailure(@NonNull Exception e) {
+//                    Toast.makeText(ToAdvertiseActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                }
+//            });
+//
+//
+//        } else {
+//            Toast.makeText(this, "Фото не выбрано", Toast.LENGTH_SHORT).show();
+//        }
+//
+//    }
 
 }
 

@@ -1,9 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationActivity">
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/registration_email_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp"
+            android:textColorHint="@color/colorAccent"
+            app:met_floatingLabel="highlight"
+            app:met_singleLineEllipsis="true"
+            android:hint="E-mail" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/registration_password_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:inputType="textPassword"
+            android:textSize="20sp"
+            android:textColorHint="@color/colorAccent"
+            app:met_floatingLabel="highlight"
+            app:met_singleLineEllipsis="true"
+            android:hint="Пароль" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/registration_name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:inputType="text"
+            android:textSize="20sp"
+            android:textColorHint="@color/colorAccent"
+            app:met_floatingLabel="highlight"
+            app:met_singleLineEllipsis="true"
+            android:hint="Введите Имя" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/registration_phone_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:inputType="phone"
+            android:textSize="20sp"
+            android:textColorHint="@color/colorAccent"
+            app:met_floatingLabel="highlight"
+            app:met_singleLineEllipsis="true"
+            android:hint="Телефон" />
+        <Button
+            android:id="@+id/registration_button_registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:text="Зарегестрировать"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -44,6 +44,7 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         Picasso.get().load(uri).resize(600,600).into(vh.imageViewProduct);
 
 
+
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
