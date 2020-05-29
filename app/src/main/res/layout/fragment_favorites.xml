@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context=".MainFragment">
+    android:background="@color/background"
+    tools:context=".Fragment.MainFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/orders"

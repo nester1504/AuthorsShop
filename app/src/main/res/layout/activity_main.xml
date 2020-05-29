@@ -3,16 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
+    android:background="@color/background"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
 
-        android:id="@+id/toolbar"
+    <com.mancj.materialsearchbar.MaterialSearchBar
+        android:visibility="visible"
+        style="@style/MaterialSearchBarLight"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:mt_menuIconDrawable="@drawable/ic_playlist_add_check_black"
+        app:mt_speechMode="false"
+        app:mt_navIconEnabled="false"
+        app:mt_hint="Поиск"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        app:mt_maxSuggestionsCount="10"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/colorPrimary" />
+        android:layout_height="wrap_content"
+        android:id="@+id/searchBar" />
+
 
 
     <androidx.drawerlayout.widget.DrawerLayout

@@ -9,32 +9,58 @@ public class Product  implements Serializable {
     private int price;
     private String heading;
     private ArrayList<String> urlImageList;
-    String key;
+    public String key;
     private boolean favorite;
     private String description;
+    private String userName;
+    private String phone;
+    private String userid;
+
+    public Product(int price, String heading, ArrayList<String> urlImageList, boolean favorite, String description, String userName, String phone, String userid) {
+        this.price = price;
+        this.heading = heading;
+        this.urlImageList = urlImageList;
+        this.favorite = favorite;
+        this.description = description;
+        this.userName = userName;
+        this.phone = phone;
+        this.userid = userid;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public String getDescription() {
         return description;
     }
 
-    public Product(int price, String heading, ArrayList<String> urlImageList, boolean favorite, String description) {
-        this.price = price;
-        this.heading = heading;
-        this.urlImageList = urlImageList;
-        this.favorite = favorite;
-        this.description = description;
-    }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public Product(int price, String heading, ArrayList<String> urlImageList, boolean favorite) {
-        this.price = price;
-        this.heading = heading;
-        this.urlImageList = urlImageList;
-        this.favorite = favorite;
-    }
 
     public boolean isFavorite() {
         return favorite;
@@ -50,17 +76,6 @@ public class Product  implements Serializable {
 
     public ArrayList<String> getUrlImageList() {
         return urlImageList;
-    }
-
-    public Product(int price, String heading, ArrayList<String> urlImageList) {
-        this.price = price;
-        this.heading = heading;
-        this.urlImageList = urlImageList;
-    }
-
-    public Product(int price, String heading) {
-        this.price = price;
-        this.heading = heading;
     }
 
     public Product(){

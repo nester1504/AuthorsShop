@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
+        
         <item
-            android:id="@+id/nav_reg_settings"
-            android:title="Настройки"/>
+            android:id="@+id/nav_reg_add"
+            android:icon="@drawable/ic_navi_add"
+            android:title="Подать объявление"/>
+        <item
+            android:id="@+id/nav_reg_search"
+            android:icon="@drawable/ic_search_black"
+            android:title="Поиск"/>
         <item
             android:id="@+id/nav_reg_myAnnouncements"
+            android:icon="@drawable/ic_navi_person"
             android:title="Мои объявления"/>
         <item
-            android:id="@+id/nav_reg_favorites"
-            android:title="Избранное"/>
-        <item
             android:id="@+id/nav_reg_message"
+            android:icon="@drawable/ic_navi_message"
             android:title="Сообщения"/>
         <item
-            android:id="@+id/nav_reg_help"
-            android:title="Помощь"/>
-        <item
-            android:id="@+id/nav_reg_contact"
-            android:title="Наши контакты"/>
-        <item
-            android:id="@+id/nav_reg_advancedSearch"
-            android:title="Расширинный поиск"/>
-    </group>
+            android:id="@+id/nav_reg_favorites"
+            android:icon="@drawable/ic_navi_stars"
+            android:title="Избранное"/>
 
+    </group>
+    <item
+        android:id="@+id/nav_reg_settings"
+        android:title="Настройки"/>
+    <item
+        android:id="@+id/nav_reg_help"
+        android:title="Помощь"/>
+    <item
+        android:id="@+id/nav_reg_contact"
+        android:visible="false"
+        android:title="Наши контакты"/>
     <item
         android:id="@+id/nav_reg_exit"
         android:title="Выйти"/>

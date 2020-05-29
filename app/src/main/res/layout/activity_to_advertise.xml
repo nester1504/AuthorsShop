@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:mask="http://schemas.android.com/apk/res-auto"
@@ -13,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ToAdvertiseActivity">
+        tools:context=".Activity.ToAdvertiseActivity">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -126,23 +127,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/materialCheckBoxName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    tools:ignore="MissingConstraints" />
-
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/name_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:met_floatingLabel="highlight"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:inputType="text"
                     android:gravity="center"
                     android:textColorHint="@color/colorAccent"
+                    android:descendantFocusability="beforeDescendants"
+                    android:focusableInTouchMode="true"
                     app:met_clearButton="true"
-                    app:met_maxCharacters="70"
+                    app:met_maxCharacters="24"
                     app:met_minCharacters="3"
                     android:hint="Заголовок" />
 
@@ -160,20 +158,18 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/materialCheckBoxPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    tools:ignore="MissingConstraints" />
 
                 <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:id="@+id/price_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:met_floatingLabel="highlight"
                     android:gravity="center"
                     android:textColorHint="@color/colorAccent"
+                    android:descendantFocusability="beforeDescendants"
+                    android:focusableInTouchMode="true"
                     app:met_clearButton="true"
                     android:hint="Цена"
                     android:inputType="number" />
@@ -193,24 +189,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/materialCheckBoxContext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    tools:ignore="MissingConstraints" />
 
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/context_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:met_floatingLabel="highlight"
                     android:inputType="text"
                     android:gravity="center"
                     android:textColorHint="@color/colorAccent"
+                    android:descendantFocusability="beforeDescendants"
+                    android:focusableInTouchMode="true"
                     app:met_clearButton="true"
                     app:met_maxCharacters="6000"
-                    app:met_minCharacters="24"
+                    app:met_minCharacters="3"
                     android:hint="Описание" />
 
             </LinearLayout>
@@ -228,21 +222,18 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/materialCheckBoxPhone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    tools:ignore="MissingConstraints" />
 
                 <br.com.sapereaude.maskedEditText.MaskedEditText
                     android:id="@+id/phone_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     mask:allowed_chars="1234567890"
                     mask:mask="+7(###)###-##-##"
-                    android:hint="1234567890"
-                   
+                    android:hint="7777777777"
+                    android:descendantFocusability="beforeDescendants"
+                    android:focusableInTouchMode="true"
                     app:keep_hint="true"
                     android:inputType="phone"
                     android:typeface="monospace" />

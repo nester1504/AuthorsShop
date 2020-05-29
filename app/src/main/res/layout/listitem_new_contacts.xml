@@ -9,9 +9,9 @@
     android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp"
-    android:layout_margin="4dp"
+    android:layout_margin="8dp"
     android:layout_width="match_parent"
-    android:layout_height="250dp">
+    android:layout_height="270dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/imageProduct"
-            android:layout_width="175dp"
-            android:layout_height="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="170dp"
             android:layout_marginStart="2dp"
             android:layout_marginEnd="2dp"
             android:scaleType="centerCrop"
@@ -44,20 +44,61 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="10000 тг"
+            android:textStyle="bold"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"
+            android:text="10000"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageProduct" />
+            app:layout_constraintTop_toBottomOf="@+id/textProduct" />
 
         <TextView
             android:id="@+id/textProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:singleLine="false"
+            android:minLines="1"
+            android:maxLines="2"
             android:text="Браслет из бисера"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageProduct" />
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textStyle="bold"
+            android:text="тг"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textPrice"
+            app:layout_constraintStart_toEndOf="@+id/textPrice"
+            app:layout_constraintTop_toTopOf="@+id/textPrice" />
+
+        <TextView
+            android:id="@+id/city_text"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textGrey"
+            android:text="Алматы"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/textPrice"
+            app:layout_constraintTop_toBottomOf="@+id/textPrice" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="2dp"
+            android:src="@drawable/ic_location_on_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/city_text"
+            app:layout_constraintStart_toEndOf="@+id/city_text" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

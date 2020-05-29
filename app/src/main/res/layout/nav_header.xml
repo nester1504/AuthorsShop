@@ -1,61 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimaryDark"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/toolbar_login_text"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:textSize="15sp"
-            android:hint="Логин" />
-
-        <EditText
-            android:id="@+id/toolbar_password_text"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:textSize="15sp"
-            android:hint="Пароль" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/nav_header_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
-        android:orientation="vertical">
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/handmade"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/toolbar_enter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Войти"
-            android:textSize="12sp"
-            android:textColor="@android:color/holo_blue_dark" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        android:layout_marginStart="8dp"
+        android:text="Здравствуйте"
+        app:layout_constraintStart_toEndOf="@+id/nav_header_img"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/toolbar_registration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textSize="12sp"
-            android:text="Зарегистрироваться"
-            android:textColor="@android:color/holo_blue_dark" />
+    <TextView
+        android:id="@+id/nav_header_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        tools:text="Александр"
+        app:layout_constraintStart_toEndOf="@+id/nav_header_img"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Ваш баланс:"
+        app:layout_constraintBottom_toBottomOf="@+id/nav_header_img"
+        app:layout_constraintStart_toEndOf="@+id/nav_header_img" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:textStyle="bold"
+        android:hint="0"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:textStyle="bold"
+        android:text="тг."
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/textView4" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_settings_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-    </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
